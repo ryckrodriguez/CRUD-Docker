@@ -1,0 +1,20 @@
+version: "3"
+services: 
+    db:
+        image: mysql
+        environment: 
+            - MYSQL_DATABASE=db_crud
+            - MYSQL_USER=root
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+        volumes:
+            - ./grid-incidentes/db/volume_mysql:/var/lib/mysql
+
+    web:
+        build: .
+        image: aplicacao-crud:v1
+        ports: 
+            - 80:80
+        volumes:
+            - ./grid-incidentes:/var/www/html
+        depends_on:
+            - db
