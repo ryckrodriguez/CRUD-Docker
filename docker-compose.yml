@@ -10,8 +10,7 @@ services:
             - ./grid-incidentes/db/volume_mysql:/var/lib/mysql
 
     web:
-        build: .
-        image: aplicacao-crud:v1
+        image: ryckrodriguez/crud:v1
         ports: 
             - 80:80
         volumes:
